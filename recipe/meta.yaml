@@ -1,5 +1,5 @@
 {% set name = "azure-mgmt-trafficmanager" %}
-{% set version = "0.51.0" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.zip
-  sha256: fc8ae77022cfe52fda4379a2f31e0b857574d536e41291a7b569b5c0f4104186
-  
+  sha256: 4741761e80346c4edd4cb3f271368ea98063f804d015e245c2fe048ed2b596a8
+
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -35,7 +35,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE.txt
-  summary: 'Microsoft Azure Traffic Manager Client Library for Python'
+  summary: Microsoft Azure Traffic Manager Client Library for Python
 
 
 extra:
