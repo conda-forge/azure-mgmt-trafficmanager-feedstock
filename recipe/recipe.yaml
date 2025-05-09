@@ -1,0 +1,47 @@
+schema_version: 1
+
+context:
+  name: azure-mgmt-trafficmanager
+  version: 0.51.0
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.io/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.zip
+  sha256: fc8ae77022cfe52fda4379a2f31e0b857574d536e41291a7b569b5c0f4104186
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+
+requirements:
+  host:
+    - python >3.0
+    - pip
+  run:
+    - python >3.0
+    - msrest >=0.5.0
+    - msrestazure >=0.4.32,<2.0.0
+    - azure-common >=1.1,<2.0
+
+tests:
+  - python:
+      imports:
+        - azure
+        - azure.mgmt
+        - azure.mgmt.trafficmanager
+      pip_check: false
+
+      python_version: ${{ python_min }}.*
+about:
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Microsoft Azure Traffic Manager Client Library for Python
+  homepage: https://github.com/Azure/azure-sdk-for-python
+
+extra:
+  recipe-maintainers:
+    - tim-werner
